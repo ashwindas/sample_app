@@ -14,14 +14,16 @@
             <th>Time</th>
           </tr>
           <%= render @microposts %>
+          <%= will_paginate @microposts %>
         </table>
-        <%= will_paginate @microposts %>
+
       <% end %>
     </td>
     <td class="sidebar round">
       <strong>Name</strong> <%= @user.name %><br />
       <strong>URL</strong> <%= link_to user_path(@user), @user %><br />
       <strong>Expenses tracked</strong> <%= @user.microposts.count %>
+      <strong>Total expense</strong> <%= @user.total_cost  %>
     </td>
   </tr>
 </table>

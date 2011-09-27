@@ -37,7 +37,7 @@ describe "LayoutLinks" do
     response.should # fill in
     click_link "Home"
     response.should # fill in
-    click_link "Sign up now!"
+    click_link "Try it? - Check it out!!"
     response.should # fill in
    end
 

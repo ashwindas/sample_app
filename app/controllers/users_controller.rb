@@ -51,7 +51,6 @@ class UsersController < ApplicationController
     @title = @user.name
   end
 
-
   private
 
     def correct_user

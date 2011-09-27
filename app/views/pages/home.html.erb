@@ -4,20 +4,18 @@
       <td class="main">
         <h1 class="micropost">New transaction</h1>
         <%= render 'shared/micropost_form' %>
+        <h3>Total expenses - $<%= @user.total_cost  %> </h3>
         <%= render 'shared/feed' %>
-      </td>
-      <td class="sidebar round">
-        <%= render 'shared/user_info' %>
       </td>
     </tr>
   </table>
 <% else %>
 
-  <h1>Sample App</h1>
+  <h1>Expense Tracker</h1>
 
   <p>
     This is the home page for the Expense tracker sample application.
   </p>
 
-  <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+  <%= link_to "Try it? - Check it out!", signup_path, :class => "signup_button" %>
 <% end %>

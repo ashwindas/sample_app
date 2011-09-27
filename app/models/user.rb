@@ -52,6 +52,14 @@ class User < ActiveRecord::Base
     Micropost.where("user_id = ?", id)
   end
 
+  def total_cost
+    # This is preliminary. See Chapter 12 for the full implementation.
+    tempMicropostList = Micropost.where("user_id = ?", id)
+    count = 0
+    tempMicropostList.each { |i| count += i.expense}
+    count
+  end
+
   private
 
     def encrypt_password
