@@ -15,5 +15,12 @@ namespace :db do
                    :password => password,
                    :password_confirmation => password)
     end
+
+    50.times do
+	    User.all(:limit => 6).each do |user|
+	      user.microposts.create!(:content => Faker::Lorem.sentence(5), :expense => (1..50).to_a.sample, :tag => ["food", "phone", "home", "college", "gas"].to_a.sample)
+	    end
+    end
+
   end
 end
