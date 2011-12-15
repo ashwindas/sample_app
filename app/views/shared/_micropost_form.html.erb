@@ -1,4 +1,4 @@
-<%= form_for @micropost do |f| %>
+<%= form_for @micropost,:html => { :id => 'micropost_form' } do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
   <div class="field">
     <h6> Description </h6>
@@ -16,3 +16,9 @@
     <%= f.submit "Submit" %>
   </div>
 <% end %>
+<script>
+   $('#micropost_form').submit(function (){
+       $.post($(this).attr('action'), $(this).serialize(), null, "script");
+       return false;
+   });
+</script>

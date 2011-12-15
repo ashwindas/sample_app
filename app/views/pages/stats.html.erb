@@ -1,0 +1,59 @@
+<% if signed_in? %>
+<table class="front" summary="For signed-in users">
+	<tr>
+		<td class="main"><h3 id="total_expense">Total expenses is - <%= number_to_currency(@total, :unit => "$") %> </h3></td>
+	</tr>
+</table>
+<div id="container" style="width: 600px; height: 600px; padding-top:10px;
+padding-bottom:10px;
+padding-right:25px;
+padding-left:25px;"></div>
+<% else %> <h1>Expense Tracker</h1>
+<p>
+	This is the home page for the Expense tracker sample application.
+</p>
+<%= link_to "Try it? - Check it out!", signup_path, :class => "signup_button" %>
+<% end %>
+<br/>
+<script type="text/javascript" charset="utf-8">
+var chart;
+$(document).ready(function() {
+   chart = new Highcharts.Chart({
+      chart: {
+         renderTo: 'container',
+         plotBackgroundColor: null,
+         plotBorderWidth: null,
+         plotShadow: false
+      },
+      title: {
+         text: ''
+      },
+      tooltip: {
+         formatter: function() {
+            	return '<b>'+ this.point.name +'</b>: '+ Math.round(this.percentage)  +' %';
+         }
+      },
+      plotOptions: {
+         pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+               enabled: true,
+               color:  '#000000',
+               connectorColor:  '#000000',
+               formatter: function() {
+                  	return '<b>'+ this.point.name +'</b>: '+ Math.round(this.percentage)  +' %';
+               }
+            }
+         }
+      },
+       series: [{
+         type: 'pie',
+         name: 'Expense represented as Pie',
+         data: [
+       <% @pie_data.each do |d|%><%= raw d %>,<%end%>
+         ]
+      }]
+   });
+});
+</script>

@@ -1,0 +1,4 @@
+$("#micropost_form").before('<div id="flash_notice"><%= escape_javascript(flash.delete(:notice)) %></div>');
+$("#transactions_table").prepend("<%= escape_javascript(render(:partial => @micropost)) %>");
+$("#total_expense").html("Total expenses - <%=number_to_currency(@micropost.user.total_cost, :unit => "$")%>");
+$("#micropost_form")[0].reset();

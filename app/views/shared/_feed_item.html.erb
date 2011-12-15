@@ -3,7 +3,7 @@
     <span class="content"><%= feed_item.content %></span>
   </td>
   <td class="micropost">
-    <span class="expense"><%= feed_item.expense %></span>
+    <span class="expense"><%= number_to_currency(feed_item.expense, :unit => "$") %></span>
   </td>
   <td class="micropost">
     <span class="tag"><%= feed_item.tag %></span>

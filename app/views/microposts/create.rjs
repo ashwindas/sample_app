@@ -1,0 +1,3 @@
+page.insert_html :top, :transactions_table, :partial => 'shared/feed_item', :object => @micropost
+page.replace_html :total_expense, "Total expenses - $#{@micropost.user.total_cost}"
+page[:micropost_form].reset

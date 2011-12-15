@@ -5,7 +5,12 @@ class MicropostsController < ApplicationController
     @micropost = current_user.microposts.build(params[:micropost])
     if @micropost.save
       flash[:success] = "Transaction created!"
-      redirect_to root_path
+
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js
+      end
+
     else
       @feed_items = []
       render 'pages/home'
